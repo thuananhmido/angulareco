@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 import { Products,Product } from 'src/app/shared/models/product.model';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-product-add',
   templateUrl: './product-add.component.html',
@@ -15,36 +17,14 @@ export class ProductAddComponent implements OnInit {
     cat_id= '';
     errorMessage = '';
     loading = false;
-
   constructor(
     private _product: ProductService,
+    private _location: Location,
    
   ) { }
 
   ngOnInit(): void {}
-  onAdd(){
-    // this.errorMessage = '';
-    // if (this.title && this.image && this.price && this.quantity) {
-    //   if (this.title == '') {
-    //     this.errorMessage = 'cần nhập đầy đủ thông tin';
-    //   } else {
-    //     this.loading = true;
-        this._product
-          .addProduct({
-            title: this.title,
-            image: this.image,
-            description: this.description,
-            price: this.price,
-            quantity: this.quantity,
-            cat_id: this.cat_id,
-          })
-  //  }
-  // }
-  // else {
-  //   this.errorMessage = 'Make sure to fill everything ;)';
-  // }
-  }
-  addProduct(){
+  addProduct(formAdd:NgForm){
     let obj={
     'title':this.title,
     'image':this.image,
@@ -54,10 +34,15 @@ export class ProductAddComponent implements OnInit {
     'cat_id':this.cat_id,
 
     }
-    this._product.createProduct(obj).subscribe(req =>{
+    this._product.createProduct(obj,).subscribe(req =>{
+      formAdd.resetForm();
       console.log(req);
     }
         );
+    }
+
+    backClicked() {
+      this._location.back();
     }
   
 }

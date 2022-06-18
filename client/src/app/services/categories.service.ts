@@ -13,8 +13,12 @@ export class CategoriesService {
 
   constructor(private http: HttpClient, private _api: ApiService) {}
 
-  getAllProducts(): Observable<Products> {
+  getCategory(): Observable<Products> {
     return this.http.get<Products>(this.url + 'categories', {
     });
+  }
+
+  getAllProductsByCatId(id_cat:any): Observable<Products> {
+    return this.http.get<Products>(this.url + 'categories/'+id_cat);
   }
 }

@@ -1,9 +1,9 @@
 const {
   addProduct,
+  editProduct,
   } = require("../middleware/validation");
   const db = require("../database/db");
   const jwt = require("jsonwebtoken");
-  const md5 = require("md5");
   
   exports.addProduct = async (params) => {
     const { error } = addProduct(params);
@@ -32,10 +32,43 @@ const {
               token: token,
               statusCode: 200,
             });
-           
           } 
         }
       );
     });
   };
   
+  //UPDATE SẢN PHẨM
+  // exports.editProduct = async (params) => {
+  //   const { error } = editProduct(params);
+  //   if (error) throw { message: error.details[0].message, statusCode: 400 };
+
+  //   const {id,title, image, description, price, quantity, cat_id } = params;
+    
+  //   return new Promise((resolve, reject) => {
+  //     db.query(
+  //       `UPDATE products SET ${title} = ? ,${image} = ? ,${description} = ?,${price} = ?,${quantity} = ?,${cat_id} = ? WHERE id = ${id}`,
+  //       [title, image,description,price, quantity,cat_id],
+  //       (err, result) => {
+  //         if (err) 
+  //         {
+  //           reject({
+  //             message: "Something went wrong, please try again",
+  //             statusCode: 400,
+  //             data: err,
+  //           });
+           
+  //         } else {
+  //           const token = jwt.sign({ data: result }, "secret");
+  //           resolve({
+  //             data: result,
+  //             message: "You have successfully add product.",
+  //             token: token,
+  //             statusCode: 200,
+  //           });
+  //             alert("Bạn đã thêm sản phẩm thành công");
+  //         } 
+  //       }
+  //     );
+  //   });
+  // };

@@ -35,29 +35,9 @@ export class ProductService {
   delete(id:number) :Observable<any>{
     return this.http.delete<any>(this.url +'products/' + id);
   }
-  addProduct(product :any):Observable<any>{
-    return this.http.post<any>(this.API +'/addProduct',{
-      title :product.title,
-      image: product.image,
-      description :product.description,
-      price:product.price,
-      quantity:product.quantity,
-      cat_id:product.cat_id
-    });
-  }
+
   createProduct(obj): Observable<Products> {
     console.log(obj);
     return this.http.post<Products>(this.url +'products/addProduct',obj);
   }
-  // add(product: any): Observable<any> {
-  //   return this._api.postTypeRequest('auth/register', {
-  //     title: product.title,
-  //     image: product.image,
-  //     description: product.description,
-  //     price: product.price,
-  //     quantity: product.quantity,
-  //     cat_id: product.cat_id,
-
-  //   });
-  // }
 } 

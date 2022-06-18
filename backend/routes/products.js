@@ -5,6 +5,9 @@ const productController = require("../controllers/productController");
 router.post("/addProduct", productController.add_product);
 
 
+// router.put("/editProduct/:productId",productController.edit_product);
+
+
 // GET ALL PRODUCTS
 // router.get("/", async (req, res) => {
 //   const { page = 1, limit = 10 } = req.query;

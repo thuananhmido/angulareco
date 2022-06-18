@@ -13,7 +13,7 @@
         [loop]="true"
       >
         <ng-template swiperSlide *ngFor="let c of categories">
-          <div class="category-card">{{ c.name }}</div>
+          <div class="category-card" routerLink="/categories/{{c.id}}">{{ c.title }} </div>
         </ng-template>
       </swiper>
     </div>

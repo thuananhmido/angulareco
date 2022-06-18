@@ -11,6 +11,8 @@ import { RegisterComponent } from './auth/components/register/register.component
 import { ProductManageComponent } from './admin/product-manage/product-manage.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { ProductAddComponent } from './admin/product-add/product-add.component';
+import { ProductEditComponent } from './admin/product-edit/product-edit.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,8 +43,16 @@ const routes: Routes = [
   {
     path: 'admin/product_add',
     component:  ProductAddComponent,
-
   },
+  {
+    path: 'admin/product-edit',
+    component:  ProductEditComponent,
+  },
+  {
+    path: 'categories',
+    component:  CategoriesComponent,
+  },
+  { path: 'categories/:id', component: CategoriesComponent },
 ];
 
 @NgModule({

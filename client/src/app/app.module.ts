@@ -40,6 +40,7 @@ import { UserComponent } from './admin/user/user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProductAddComponent } from './admin/product-add/product-add.component';
+import { ProductEditComponent } from './admin/product-edit/product-edit.component';
 
 registerLocaleData(en);
 
@@ -61,6 +62,7 @@ registerLocaleData(en);
     UserComponent,
     CategoriesComponent,
     ProductAddComponent,
+    ProductEditComponent,
   ],
   imports: [
     BrowserModule,

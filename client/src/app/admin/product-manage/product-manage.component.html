@@ -38,7 +38,7 @@
                         <td>{{n.price}}</td>
                         <td>{{n.quantity}}</td>
                         <td><a   class = "btn btn-danger"href="javascript:void(0)" (click)="onDelete(n.id)">Xóa</a></td>
-                        <td><a   class = "btn btn-primary"href="javascript:void(0)" (click)="onEdit(n.id)">Sửa</a></td>
+                        <td><a   class = "btn btn-primary"href="javascript:void(0)" [routerLink]="['/admin/product-edit']" (click)="onEdit(n.id)">Sửa</a></td>
                     </tr>
                 </tbody>
                 <tfoot>
