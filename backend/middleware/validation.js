@@ -49,10 +49,23 @@ const addProduct = (data) => {
 
   return schema.validate(data, options);
 };
+const updateProductValidation = (data) => {
+  const schema = Joi.object({
+    productId: Joi.string().required().strict(),
+    title: Joi.string().required().strict(),
+    image: Joi.string().required().strict(),
+    description: Joi.string().required().strict(),
+    price: Joi.string().required().strict(),
+    quantity: Joi.string().required().strict(),
+    cat_id: Joi.string().required().strict(),
+  });
 
+  return schema.validate(data, options);
+};
 module.exports = {
   registerValidation,
   loginValidation,
   updateUserValidation,
   addProduct,
+  updateProductValidation,
 };

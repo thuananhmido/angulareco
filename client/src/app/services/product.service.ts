@@ -11,9 +11,8 @@ import { ApiService } from './api.service';
 })
 export class ProductService {
   private url = environment.apiUrl;
-  private API :string = 'http://localhost:5000/api/v1/product';
+  private API :string = 'http://localhost:5000/api/v1/products';
   public product: Observable<any>;
-
   constructor(private http: HttpClient, private _api: ApiService) {}
 
   getAllProducts(limitOfResults = 9, page): Observable<Products> {
@@ -24,7 +23,7 @@ export class ProductService {
       },
     });
   }
-  getSingleProduct(id: Number): Observable<any> {
+  getSingleProduct(id: any): Observable<any> {
     console.log(id);
     return this._api.getTypeRequest('products/' + id);
   }
@@ -39,5 +38,11 @@ export class ProductService {
   createProduct(obj): Observable<Products> {
     console.log(obj);
     return this.http.post<Products>(this.url +'products/addProduct',obj);
+  }
+  
+  updateProduct(obj,id): Observable<any> {
+    console.log(obj);
+    return this.http.put<any>(this.url +'products/'+id,obj);
+
   }
 } 

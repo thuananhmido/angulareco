@@ -13,7 +13,7 @@
       <button  class="btn btn-primary" (click)="backClicked()">Quay lại</button>
       <hr>
         <div>
-            <form  method = "POST" (ngSubmit)="addProduct(formAdd)" #formAdd = "ngForm" >
+            <form  method = "POST" (ngSubmit)="editProduct(id)" #formAdd = "ngForm" >
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="inputEmail4">Tên</label>
@@ -78,7 +78,7 @@
                   />  
                   </div>
                 </div>
-                <button nz-button type="submit" [nzLoading]="loading"  class="btn btn-primary">Thêm sản phẩm</button>
+                <button nz-button type="submit"   class="btn btn-primary">Thêm sản phẩm</button>
               </form>
             
         </div>

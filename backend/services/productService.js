@@ -1,6 +1,6 @@
 const {
   addProduct,
-  editProduct,
+  updateProductValidation,
   } = require("../middleware/validation");
   const db = require("../database/db");
   const jwt = require("jsonwebtoken");
@@ -40,7 +40,7 @@ const {
   
   //UPDATE SẢN PHẨM
   // exports.editProduct = async (params) => {
-  //   const { error } = editProduct(params);
+    // const { error } = editProduct(params);
   //   if (error) throw { message: error.details[0].message, statusCode: 400 };
 
   //   const {id,title, image, description, price, quantity, cat_id } = params;
@@ -72,3 +72,44 @@ const {
   //     );
   //   });
   // };
+  exports.updateProduct = async (params) => {
+    const { error } = updateProductValidation(params);
+    if (error) throw { message: error.details[0].message, statusCode: 400 };
+    const { productId, title, image, description,price,quantity,cat_id } = params;
+  
+    return new Promise((resolve) => {
+      db.query(
+        `SELECT * FROM products WHERE id = ?`,
+        [productId],
+        (err, result) => {
+          if (err) reject({ message: err, statusCode: 500 });
+          if (result.length === 0) {
+            reject({
+              message: "please try again",
+              statusCode: 400,
+            });
+          }
+ 
+      let query = "";
+
+      
+        query = `title = '${title}', image = '${image}', description = '${description}',price = '${price}',quantity='${quantity}',cat_id ='${cat_id}'`;
+            db.query(
+              `UPDATE products SET ${query} WHERE id = ?`,
+              [productId],
+              (err, result) => {
+                if (err) throw { message: err, statusCode: 500 };
+                resolve({
+                  message: "Product updated",
+                  data: result,
+                });
+              }
+            );
+      
+            }
+      );
+    
+          });
+          
+     };
+  

@@ -42,6 +42,26 @@ export class AuthService {
         })
       );
   }
+  loginAdmin(credentials: any): Observable<any> {
+    return this._api
+      .postTypeRequest('auth/login', {
+        email: credentials.email,
+        password: credentials.password,
+      })
+      .pipe(
+        map((res: any) => {
+          let user = {
+            email: credentials.email,
+            token: res.token,
+          };
+          this._token.setToken(res.token);
+          this._token.setUser(res.data[0]);
+          console.log(res);
+          this.userSubject.next(user);
+          return user;
+        })
+      );
+  }
 
   register(user: any): Observable<any> {
     return this._api.postTypeRequest('auth/register', {

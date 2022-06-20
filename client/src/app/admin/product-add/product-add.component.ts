@@ -44,5 +44,5 @@ export class ProductAddComponent implements OnInit {
     backClicked() {
       this._location.back();
     }
-  
+    
 }

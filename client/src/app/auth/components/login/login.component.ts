@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
   loading = false;
 
   constructor(private _auth: AuthService, private _router: Router) {}
-
   ngOnInit(): void {}
 
   onSubmit(): void {
@@ -38,7 +37,6 @@ export class LoginComponent implements OnInit {
         );
     }
   }
-
   canSubmit(): boolean {
     return this.email.length > 0 && this.password.length > 0;
   }

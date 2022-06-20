@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require("../database/db");
 const productController = require("../controllers/productController");
 router.post("/addProduct", productController.add_product);
-
+router.put("/:productId", productController.update_product);
 
 // router.put("/editProduct/:productId",productController.edit_product);
 
@@ -38,7 +38,7 @@ router.post("/addProduct", productController.add_product);
 router.get("/:productId", async (req, res) => {
   const { productId } = req.params;
   db.query(
-    `SELECT p.id, p.title, p.image, p.images, p.description, p.price, p.quantity, p.short_desc,
+    `SELECT p.id, p.title, p.image, p.images, p.description, p.price, p.quantity, p.short_desc,p.cat_id,
         c.title as category FROM products p JOIN categories c ON
             c.id = p.cat_id WHERE p.id = ${productId}`,
     (err, results) => {

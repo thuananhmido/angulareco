@@ -13,6 +13,7 @@ import { AuthGuardService } from './guards/auth-guard.service';
 import { ProductAddComponent } from './admin/product-add/product-add.component';
 import { ProductEditComponent } from './admin/product-edit/product-edit.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -47,6 +48,14 @@ const routes: Routes = [
   {
     path: 'admin/product-edit',
     component:  ProductEditComponent,
+  },
+  {
+    path: 'admin/product-edit/:id',
+    component:  ProductEditComponent,
+  },
+  {
+    path: 'admin/admin_panel',
+    component:  AdminPanelComponent,
   },
   {
     path: 'categories',

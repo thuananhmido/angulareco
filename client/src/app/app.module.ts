@@ -41,6 +41,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProductAddComponent } from './admin/product-add/product-add.component';
 import { ProductEditComponent } from './admin/product-edit/product-edit.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { LoginadminComponent } from './auth/components/loginadmin/loginadmin.component';
 
 registerLocaleData(en);
 
@@ -63,6 +65,8 @@ registerLocaleData(en);
     CategoriesComponent,
     ProductAddComponent,
     ProductEditComponent,
+    AdminPanelComponent,
+    LoginadminComponent,
   ],
   imports: [
     BrowserModule,
