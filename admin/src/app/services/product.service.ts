@@ -1,0 +1,48 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Products, Product } from '../shared/models/product.model';
+import { environment } from '../../environments/environment';
+import { ApiService } from './api.service';
+import { RouterLink } from '@angular/router';
+
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ProductService {
+  private url = environment.apiUrl;
+  private API :string = 'http://localhost:5000/api/v1/products';
+  public product: Observable<any>;
+  constructor(private http: HttpClient, private _api: ApiService) {}
+
+  getAllProducts(limitOfResults = 9, page): Observable<Products> {
+    return this.http.get<Products>(this.url + 'products', {
+      params: {
+        limit: limitOfResults.toString(),
+        page: page,
+      },
+    });
+  }
+  getSingleProduct(id: any): Observable<any> {
+    console.log(id);
+    return this._api.getTypeRequest('products/' + id);
+  }
+  getAllProductsAdmin(): Observable<Products> {
+    return this.http.get<Products>(this.url + 'products', {
+    });
+  }
+  delete(id:number) :Observable<any>{
+    return this.http.delete<any>(this.url +'products/' + id);
+  }
+
+  createProduct(obj): Observable<Products> {
+    alert('Thêm sản phẩm thành công');
+    return this.http.post<Products>(this.url +'products/addProduct',obj);
+  }
+  
+  updateProduct(obj,id): Observable<any> {
+    return this.http.put<any>(this.url +'products/'+id,obj);
+
+  }
+} 

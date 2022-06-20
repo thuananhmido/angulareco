@@ -4,6 +4,7 @@ import { ProductService } from '../services/product.service';
 import { Categories } from '../shared/models/categories.model';
 import { Products, Product } from '../shared/models/product.model';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../services/cart.service';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -17,7 +18,8 @@ export class CategoriesComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private _route: ActivatedRoute,
-    private cateService :CategoriesService
+    private cateService :CategoriesService,
+    private cartService: CartService,
   ) { 
     
   }

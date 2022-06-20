@@ -49,7 +49,7 @@
     &__list {
       display: grid;
       grid-template-columns: 1fr;
-      row-gap: 24px;
+      row-gap: 30px;
       .product-card {
         height: 100%;
         max-width: 350px;
@@ -93,6 +93,32 @@
         grid-template-columns: 1fr 1fr;
         column-gap: 24px;
         row-gap: 24px;
+        .product-card {
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .home-container {
+    .categories {
+      max-width: calc(700px + 72px); // width of cards + all padding + gap
+      padding: 36px 24px;
+      &__list {
+        .category-card {
+          height: 220px;
+        }
+      }
+    }
+    .products {
+      max-width: calc(1050px + 96px); // width of cards + all padding + gap
+      padding: 36px 24px;
+      &__header {
+        margin-bottom: 16px;
+      }
+      &__list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
         .product-card {
         }
       }

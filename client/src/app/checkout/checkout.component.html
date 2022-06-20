@@ -1,4 +1,4 @@
-
+<app-header></app-header>
 <div class="checkout-container">
   <div class="progress-container">
     <nz-progress
@@ -31,13 +31,14 @@
       <button
         nz-button
         (click)="submitBilling()"
+        [disabled]="canBillingSubmit()"
       >
         Continue
       </button>
     </div>
   </div>
   <!-- SECOND STEP -->
-  <div *ngIf="currentStep === 2">
+  <!-- <div *ngIf="currentStep === 2">
     <div class="payment-container">
       <h2>Payment Details</h2>
       <form>
@@ -96,6 +97,72 @@
         Continue
       </button>
     </div>
+  </div> -->
+  <div *ngIf="currentStep === 2">
+    <div class="payment-container" style="border: none">
+      <div class="payment">
+        <div class="bg"></div>
+        <div class="card">
+          <img src="../../assets/chip.png" class="chip" />
+          <div class="logo"></div>
+          <h2 class="bankName" contenteditable="true">Bank Name</h2>
+          <form>
+            <div class="inputBox">
+              <span>Card No.</span>
+              <input
+                type="text"
+                placeholder="0123 4567 8901 2345"
+                maxlength="19"
+                name="cardNumber"
+                [(value)]="cardNumber"
+                [(ngModel)]="cardNumber"
+              />
+            </div>
+            <div class="inputBox">
+              <span>Card Holder</span>
+              <input
+                type="text"
+                placeholder="John Doe"
+                name="cardName"
+                [(value)]="cardName"
+                [(ngModel)]="cardName"
+              />
+            </div>
+            <div class="group">
+              <div class="inputBox">
+                <span>Valid Thru</span>
+                <input
+                  type="text"
+                  placeholder="MM/YY"
+                  maxlength="5"
+                  name="cardExpiry"
+                  [(value)]="cardExpiry"
+                  [(ngModel)]="cardExpiry"
+                />
+              </div>
+              <div class="inputBox">
+                <span>CCV</span>
+                <input
+                  type="password"
+                  placeholder="***"
+                  maxlength="4"
+                  name="cardCode"
+                  [(value)]="cardCode"
+                  [(ngModel)]="cardCode"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <button
+          class="btn"
+          [disabled]="!canPaymentSubmit()"
+          (click)="submitPayment()"
+        >
+          Confirm and Pay
+        </button>
+      </div>
+    </div>
   </div>
   <!-- THIRD STEP -->
   <div *ngIf="currentStep === 3">
@@ -106,7 +173,7 @@
           <div><span>Item(s)</span> {{ cartData.products.length }}</div>
           <div><span>Payment method</span> Credit</div>
           <div>
-            <span>Order total</span> {{ cartData.total | currency: "USD" }}
+            <span>Order total</span> {{ cartData.total | currency: "VND" }}
           </div>
         </div>
         <button
@@ -129,8 +196,8 @@
               {{ item.title }}
             </div>
             <div class="item-total">
-              {{ item.price | currency: "USD" }} x {{ item.quantity }} =
-              {{ item.quantity * item.price | currency: "USD" }}
+              {{ item.price | currency: "VND" }} x {{ item.quantity }} =
+              {{ item.quantity * item.price | currency: "VND" }}
             </div>
           </div>
         </div>
@@ -163,8 +230,8 @@
               {{ item.title }}
             </div>
             <div class="item-total">
-              {{ item.price | currency: "USD" }} x {{ item.quantity }} =
-              {{ item.quantity * item.price | currency: "USD" }}
+              {{ item.price | currency: "VND" }} x {{ item.quantity }} =
+              {{ item.quantity * item.price | currency: "VND" }}
             </div>
           </div>
         </div>

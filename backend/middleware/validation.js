@@ -55,9 +55,9 @@ const updateProductValidation = (data) => {
     title: Joi.string().required().strict(),
     image: Joi.string().required().strict(),
     description: Joi.string().required().strict(),
-    price: Joi.string().required().strict(),
-    quantity: Joi.string().required().strict(),
-    cat_id: Joi.string().required().strict(),
+    price: Joi.required().strict(),
+    quantity: Joi.required().strict(),
+    cat_id: Joi.required().strict(),
   });
 
   return schema.validate(data, options);

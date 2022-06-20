@@ -19,17 +19,6 @@ import { Products, Product } from '../shared/models/product.model';
 })
 export class HomeComponent implements OnInit {
   products: Product[] = [];
-  // categories: any[] = [
-  //   {
-  //     name: 'Laptops',
-  //   },
-  //   {
-  //     name: 'Accessories',
-  //   },
-  //   {
-  //     name: 'Cameras',
-  //   },
-  // ];
   categories: Categories[] = [];
   loading = false;
   productPageCounter = 1;

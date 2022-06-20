@@ -35,13 +35,8 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzTableModule } from 'ng-zorro-antd/table';
-import { ProductManageComponent } from './admin/product-manage/product-manage.component';
-import { UserComponent } from './admin/user/user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoriesComponent } from './categories/categories.component';
-import { ProductAddComponent } from './admin/product-add/product-add.component';
-import { ProductEditComponent } from './admin/product-edit/product-edit.component';
-import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { LoginadminComponent } from './auth/components/loginadmin/loginadmin.component';
 
 registerLocaleData(en);
@@ -60,12 +55,9 @@ registerLocaleData(en);
     HeaderComponent,
     FooterComponent,
     ProductCardComponent,
-    ProductManageComponent,
-    UserComponent,
+
     CategoriesComponent,
-    ProductAddComponent,
-    ProductEditComponent,
-    AdminPanelComponent,
+
     LoginadminComponent,
   ],
   imports: [
